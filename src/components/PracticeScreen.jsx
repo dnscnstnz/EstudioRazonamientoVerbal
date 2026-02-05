@@ -3,65 +3,81 @@ function PracticeScreen({
   currentIndex,
   totalQuestions,
   timeLeft,
+  selectedAnswer,
   onAnswer,
+  onNext,
+  onPrev,
+  onFinish,
 }) {
-  if (!currentQuestion) return null;
+  if (!currentQuestion) {
+    return (
+      <div className="text-center">
+        <p>Cargando pregunta...</p>
+      </div>
+    );
+  }
 
-  const progress = ((currentIndex + 1) / totalQuestions) * 100;
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
 
   return (
     <div>
-      <p>
-        ⏱ Tiempo restante:{" "}
-        <strong>
-          {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
-        </strong>
-      </p>
-
-      <p>
-        Pregunta {currentIndex + 1} de {totalQuestions}
-      </p>
-
-      <div style={{ background: "#eee", height: "10px", marginBottom: "10px" }}>
-        <div
-          style={{
-            width: `${progress}%`,
-            height: "100%",
-            background: "#4caf50",
-          }}
-        />
+      <div className="practice-header">
+        <div className="time-display">⏱ {formatTime(timeLeft)}</div>
+        <div className="question-counter">
+          Pregunta {currentIndex + 1} de {totalQuestions}
+        </div>
       </div>
 
-      {/* Contenedor del texto con altura máxima de 1/4 de pantalla */}
-      <div
-        style={{
-          maxHeight: "25vh", // máximo un cuarto de la pantalla
-          overflowY: "auto", // scroll interno si el texto es largo
-          padding: "10px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-          marginBottom: "10px",
-          maxWidth: "600px", // ancho máximo para que no ocupe toda la pantalla
-          whiteSpace: "pre-line", // respeta saltos de línea en el texto
-          fontSize: "16px",
-          lineHeight: "1.5em",
-        }}
-      >
+      <div className="separator"></div>
+
+      <div className="config-section">
         <strong>Texto:</strong>
-        <p style={{ margin: 0 }}>{currentQuestion.text}</p>
+        <div className="question-text">{currentQuestion.text}</div>
       </div>
 
-      <p>
+      <div className="config-section">
         <strong>Pregunta:</strong> {currentQuestion.question}
-      </p>
+      </div>
 
-      <ul>
+      <div className="checkbox-group">
         {currentQuestion.options.map((option, index) => (
-          <li key={index}>
-            <button onClick={() => onAnswer(index)}>{option}</button>
-          </li>
+          <button
+            key={index}
+            className={`option-button ${
+              selectedAnswer === index ? "active" : ""
+            }`}
+            onClick={() => onAnswer(index)}
+          >
+            {option}
+          </button>
         ))}
-      </ul>
+      </div>
+
+      <div className="separator"></div>
+
+      <div className="nav-buttons">
+        <button
+          className="nav-btn nav-prev"
+          onClick={onPrev}
+          disabled={currentIndex === 0}
+        >
+          ← Anterior
+        </button>
+
+        {currentIndex < totalQuestions - 1 ? (
+          <button className="nav-btn nav-next" onClick={onNext}>
+            Siguiente →
+          </button>
+        ) : (
+          <button className="nav-btn nav-next" onClick={onFinish}>
+            Finalizar
+          </button>
+        )}
+      </div>
     </div>
   );
 }

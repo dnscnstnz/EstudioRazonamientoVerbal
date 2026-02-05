@@ -1998,5 +1998,209 @@ export const questions = [
     "correctAnswer": 0,
     "difficulty": "medium",
     "explanation": "Verdadero. El refrigerador es un objeto cotidiano conectado a la red que transmite datos, cumpliendo la definición del texto."
-  }
+  },
+{
+  "id": 201,
+  "type": "multiple",
+  "difficulty": "medium",
+  "text": "Los modelos de lenguaje como DeepSeek procesan texto tokenizándolo en unidades más pequeñas. Durante el entrenamiento, aprenden patrones estadísticos en grandes volúmenes de datos para predecir la siguiente palabra más probable en una secuencia.",
+  "question": "¿Qué es la 'tokenización' en el contexto de modelos de lenguaje?",
+  "options": [
+    "La conversión de texto a voz",
+    "La división del texto en unidades procesables",
+    "La encriptación de mensajes secretos",
+    "La traducción automática entre idiomas"
+  ],
+  "correctAnswer": 1,
+  "explanation": "La tokenización es el proceso de dividir el texto en unidades más pequeñas (tokens) que el modelo puede procesar, como palabras o subpalabras."
+},
+
+{
+  "id": 202,
+  "type": "true_false",
+  "difficulty": "easy",
+  "text": "La atención (attention mechanism) en redes neuronales permite al modelo enfocarse en diferentes partes de la entrada al generar cada parte de la salida, mejorando el manejo de dependencias a largo plazo.",
+  "question": "El mecanismo de atención ayuda a los modelos a procesar textos muy largos.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 0,
+  "explanation": "Verdadero. La atención permite a los modelos considerar relaciones entre palabras distantes, facilitando el procesamiento de textos largos."
+},
+
+{
+  "id": 203,
+  "type": "multiple",
+  "difficulty": "hard",
+  "text": "El fine-tuning o ajuste fino es la técnica donde un modelo preentrenado (como GPT o DeepSeek) se especializa para una tarea específica usando un conjunto de datos más pequeño y especializado. Esto es más eficiente que entrenar desde cero.",
+  "question": "¿Por qué el fine-tuning es más eficiente que entrenar un modelo desde cero?",
+  "options": [
+    "Porque usa menos electricidad",
+    "Porque aprovecha conocimiento general ya aprendido",
+    "Porque no necesita datos de entrenamiento",
+    "Porque funciona sin conexión a internet"
+  ],
+  "correctAnswer": 1,
+  "explanation": "El fine-tuning es eficiente porque parte de un modelo que ya aprendió patrones lingüísticos generales, requiriendo solo ajustes específicos para la tarea."
+},
+
+{
+  "id": 204,
+  "type": "true_false",
+  "difficulty": "medium",
+  "text": "El overfitting ocurre cuando un modelo de machine learning se ajusta demasiado a los datos de entrenamiento, incluyendo el ruido, y pierde capacidad para generalizar a datos nuevos no vistos.",
+  "question": "Un modelo con overfitting obtiene puntuación perfecta en entrenamiento pero mala en validación.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 0,
+  "explanation": "Verdadero. Esa es la señal clásica de overfitting: excelente rendimiento en datos de entrenamiento pero pobre en datos nuevos."
+},
+
+{
+  "id": 205,
+  "type": "multiple",
+  "difficulty": "medium",
+  "text": "La generación de texto con temperature controla la aleatoriedad en las predicciones. Temperature baja (ej: 0.2) produce respuestas más deterministas y conservadoras, mientras que temperature alta (ej: 1.0) genera respuestas más creativas y diversas.",
+  "question": "Si quieres que un asistente de IA sea más creativo en sus respuestas, ¿qué temperature deberías usar?",
+  "options": [
+    "Temperature muy baja (0.1)",
+    "Temperature media (0.5)",
+    "Temperature alta (1.0)",
+    "Temperature cero (0.0)"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Temperature alta (como 1.0) aumenta la aleatoriedad, haciendo las respuestas más creativas y menos predecibles."
+},
+
+{
+  "id": 206,
+  "type": "true_false",
+  "difficulty": "hard",
+  "text": "Los embeddings son representaciones vectoriales densas de palabras o frases que capturan significado semántico. Palabras con significados similares tienden a tener embeddings cercanos en el espacio vectorial multidimensional.",
+  "question": "Los embeddings convierten palabras en números aleatorios sin relación semántica.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 1,
+  "explanation": "Falso. Los embeddings precisamente capturan relaciones semánticas: palabras similares tienen vectores similares."
+},
+
+{
+  "id": 207,
+  "type": "multiple",
+  "difficulty": "easy",
+  "text": "El Transformer es la arquitectura neural que revolucionó el procesamiento de lenguaje natural. Introdujo el mecanismo de auto-atención que procesa todas las palabras en paralelo, a diferencia de las RNNs que procesaban secuencialmente.",
+  "question": "¿Qué ventaja principal tiene la arquitectura Transformer sobre las RNN?",
+  "options": [
+    "Procesamiento en paralelo más rápido",
+    "Usa menos memoria",
+    "No necesita entrenamiento",
+    "Solo funciona en inglés"
+  ],
+  "correctAnswer": 0,
+  "explanation": "El procesamiento en paralelo (gracias a la auto-atención) permite entrenamiento más rápido y manejo de dependencias a larga distancia."
+},
+
+{
+  "id": 208,
+  "type": "true_false",
+  "difficulty": "medium",
+  "text": "El aprendizaje por refuerzo con retroalimentación humana (RLHF) es una técnica donde modelos de lenguaje se ajustan mediante preferencias humanas, alineando mejor las respuestas con valores humanos como la utilidad y la seguridad.",
+  "question": "RLHF garantiza que la IA siempre diga la verdad absoluta.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 2,
+  "explanation": "No se dice. RLHF alinea respuestas con preferencias humanas, pero no garantiza verdad absoluta ni elimina alucinaciones."
+},
+
+{
+  "id": 209,
+  "type": "multiple",
+  "difficulty": "hard",
+  "text": "La Ley de Moore observó que el número de transistores en microchips se duplica aproximadamente cada dos años. Sin embargo, esta tendencia se está desacelerando debido a límites físicos como la disipación de calor y efectos cuánticos a escala nanométrica.",
+  "question": "¿Qué límite físico actual afecta más la continuación de la Ley de Moore?",
+  "options": [
+    "La escasez de silicio",
+    "La disipación de calor en chips ultra-densos",
+    "El costo de la electricidad",
+    "La falta de programadores"
+  ],
+  "correctAnswer": 1,
+  "explanation": "La disipación de calor es un límite físico crítico: más transistores en menos espacio generan más calor que debe disiparse."
+},
+
+{
+  "id": 210,
+  "type": "true_false",
+  "difficulty": "easy",
+  "text": "La ética en IA incluye principios como transparencia, equidad, privacidad y responsabilidad. Estos principios buscan que los sistemas de IA beneficien a la humanidad minimizando riesgos y sesgos indeseados.",
+  "question": "La equidad en IA significa tratar exactamente igual a todas las personas en todas las situaciones.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 1,
+  "explanation": "Falso. Equidad en IA a menudo significa tratar diferencialmente según contexto para lograr resultados justos, no idénticos."
+},
+
+{
+  "id": 211,
+  "type": "multiple",
+  "difficulty": "medium",
+  "text": "La computación cuántica utiliza qubits que pueden estar en superposición de estados 0 y 1 simultáneamente. Esto permite resolver ciertos problemas (como factorización de números grandes) exponencialmente más rápido que las computadoras clásicas.",
+  "question": "¿Qué propiedad de los qubits les da ventaja sobre los bits clásicos?",
+  "options": [
+    "Son más baratos de producir",
+    "Pueden representar múltiples estados a la vez",
+    "No necesitan refrigeración",
+    "Son compatibles con software existente"
+  ],
+  "correctAnswer": 1,
+  "explanation": "La superposición cuántica permite a los qubits representar múltiples estados simultáneamente, enabling paralelismo masivo."
+},
+
+{
+  "id": 212,
+  "type": "true_false",
+  "difficulty": "hard",
+  "text": "La paradoja de Moravec afirma que, contrario a la intuición, las tareas que los humanos consideran difíciles (como cálculo matemático) son fáciles para las IA, mientras que las tareas que nos parecen fáciles (como percepción y movimiento) son extremadamente difíciles para las máquinas.",
+  "question": "Reconocer un gato en una foto es más difícil para una IA que resolver ecuaciones diferenciales.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 0,
+  "explanation": "Verdadero. La paradoja de Moravec explica precisamente esto: la percepción visual (reconocer gatos) requiere eones de evolución, mientras que el razonamiento simbólico es reciente en términos evolutivos."
+},
+
+{
+  "id": 213,
+  "type": "multiple",
+  "difficulty": "medium",
+  "text": "Las GANs (Generative Adversarial Networks) consisten en dos redes neuronales que compiten: un generador que crea datos falsos y un discriminador que intenta distinguir datos reales de falsos. Esta competencia mejora la calidad de ambos.",
+  "question": "¿Qué red en una GAN es responsable de crear nuevas imágenes?",
+  "options": [
+    "El discriminador",
+    "El generador", 
+    "El codificador",
+    "El decodificador"
+  ],
+  "correctAnswer": 1,
+  "explanation": "El generador es la red que crea datos sintéticos (como imágenes falsas) intentando engañar al discriminador."
+},
+
+{
+  "id": 214,
+  "type": "true_false",
+  "difficulty": "easy",
+  "text": "El término 'alucinación' en IA se refiere cuando un modelo genera información que parece plausible pero no está basada en sus datos de entrenamiento o en hechos reales, inventando detalles falsos con confianza.",
+  "question": "Las alucinaciones en IA siempre son intencionales y maliciosas.",
+  "options": ["Verdadero", "Falso", "No se dice"],
+  "correctAnswer": 1,
+  "explanation": "Falso. Las alucinaciones son generalmente errores no intencionales del modelo, no actos maliciosos."
+},
+
+{
+  "id": 215,
+  "type": "multiple",
+  "difficulty": "hard",
+  "text": "La computación neuromórfica diseña chips que imitan la estructura y funcionamiento del cerebro biológico, con neuronas y sinapsis artificiales. Estos chips son altamente eficientes en energía para tareas de reconocimiento de patrones.",
+  "question": "¿Qué característica principal distingue la computación neuromórfica?",
+  "options": [
+    "Usa solo software, no hardware especial",
+    "Imita la arquitectura del cerebro biológico",
+    "Es mil veces más rápida que las GPU",
+    "Solo funciona para cálculos matemáticos"
+  ],
+  "correctAnswer": 1,
+  "explanation": "La computación neuromórfica se caracteriza por diseñar hardware que emula la estructura neuronal del cerebro, no solo imitar funciones con software en hardware convencional."
+}
 ];

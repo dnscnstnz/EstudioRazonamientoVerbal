@@ -5,16 +5,11 @@ function ConfigScreen({
   setDuration,
   questionTypes,
   setQuestionTypes,
-  difficultyFilters, // Nuevo prop: ['easy', 'medium', 'hard']
-  setDifficultyFilters, // Nuevo prop
+  difficultyFilters,
+  setDifficultyFilters,
   onStart,
 }) {
-  // Generamos opciones de 5 a 30 minutos
   const timeOptions = Array.from({ length: 26 }, (_, i) => i + 5);
-
-  // Cálculo de preguntas para "presión":
-  // Por ejemplo, 1.2 minutos por pregunta (Dura / 1.2)
-  const estimatedQuestions = Math.floor(duration / 1.2);
 
   const handleDifficultyChange = (level) => {
     if (difficultyFilters.includes(level)) {
@@ -25,17 +20,17 @@ function ConfigScreen({
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+    <div>
       <h1>Configura tu práctica</h1>
 
-      <section>
+      <div className="config-section">
         <label>
           <strong>Duración del simulacro:</strong>
         </label>
         <select
+          className="config-select"
           value={duration}
           onChange={(e) => setDuration(Number(e.target.value))}
-          style={{ width: "100%", padding: "8px", margin: "10px 0" }}
         >
           {timeOptions.map((t) => (
             <option key={t} value={t}>
@@ -43,85 +38,78 @@ function ConfigScreen({
             </option>
           ))}
         </select>
-      </section>
+      </div>
 
-      <hr />
+      <div className="separator"></div>
 
-      <section>
+      <div className="config-section">
         <h3>Tipos de preguntas</h3>
-        <label style={{ display: "block", marginBottom: "8px" }}>
-          <input
-            type="checkbox"
-            checked={questionTypes.includes("multiple")}
-            onChange={(e) => {
-              e.target.checked
-                ? setQuestionTypes([...questionTypes, "multiple"])
-                : setQuestionTypes(
-                    questionTypes.filter((t) => t !== "multiple"),
-                  );
-            }}
-          />{" "}
-          Selección múltiple
-        </label>
+        <div className="checkbox-group">
+          <label className="checkbox-item">
+            <input
+              type="checkbox"
+              checked={questionTypes.includes("multiple")}
+              onChange={(e) => {
+                e.target.checked
+                  ? setQuestionTypes([...questionTypes, "multiple"])
+                  : setQuestionTypes(
+                      questionTypes.filter((t) => t !== "multiple"),
+                    );
+              }}
+            />
+            <span>Selección múltiple</span>
+          </label>
 
-        <label style={{ display: "block", marginBottom: "8px" }}>
-          <input
-            type="checkbox"
-            checked={questionTypes.includes("true_false")}
-            onChange={(e) => {
-              e.target.checked
-                ? setQuestionTypes([...questionTypes, "true_false"])
-                : setQuestionTypes(
-                    questionTypes.filter((t) => t !== "true_false"),
-                  );
-            }}
-          />{" "}
-          Verdadero / Falso / No se dice
-        </label>
-      </section>
+          <label className="checkbox-item">
+            <input
+              type="checkbox"
+              checked={questionTypes.includes("true_false")}
+              onChange={(e) => {
+                e.target.checked
+                  ? setQuestionTypes([...questionTypes, "true_false"])
+                  : setQuestionTypes(
+                      questionTypes.filter((t) => t !== "true_false"),
+                    );
+              }}
+            />
+            <span>Verdadero / Falso / No se dice</span>
+          </label>
+        </div>
+      </div>
 
-      <hr />
+      <div className="separator"></div>
 
-      <section>
+      <div className="config-section">
         <h3>Dificultad</h3>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="difficulty-grid">
           {["easy", "medium", "hard"].map((level) => (
-            <label key={level} style={{ textTransform: "capitalize" }}>
-              <input
-                type="checkbox"
-                checked={difficultyFilters.includes(level)}
-                onChange={() => handleDifficultyChange(level)}
-              />{" "}
+            <div
+              key={level}
+              className={`difficulty-chip ${
+                difficultyFilters.includes(level) ? "active" : ""
+              }`}
+              onClick={() => handleDifficultyChange(level)}
+            >
               {level === "easy"
                 ? "Fácil"
                 : level === "medium"
                   ? "Media"
                   : "Difícil"}
-            </label>
+            </div>
           ))}
         </div>
-      </section>
-
-      <br />
+      </div>
 
       <button
+        className="start-button"
         onClick={onStart}
         disabled={questionTypes.length === 0 || difficultyFilters.length === 0}
-        style={{
-          width: "100%",
-          padding: "12px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
       >
         Comenzar práctica
       </button>
 
       {(questionTypes.length === 0 || difficultyFilters.length === 0) && (
-        <p style={{ color: "red", fontSize: "0.8em" }}>
+        <p className="error-text">
           * Selecciona al menos un tipo y una dificultad
         </p>
       )}

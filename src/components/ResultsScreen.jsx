@@ -1,70 +1,73 @@
 function ResultsScreen({ practiceQuestions, userAnswers, results, onRestart }) {
   return (
     <div>
-      <h1>Práctica terminada</h1>
+      <div className="results-header">
+        <h1>Práctica terminada</h1>
+        <p>Resumen de resultados</p>
+      </div>
 
-      <p>✅ Correctas: {results.correct}</p>
-      <p>❌ Incorrectas: {results.incorrect}</p>
+      <div className="results-stats">
+        <div className="stat-card">
+          <h3 style={{ color: "#10b981" }}>{results.correct}</h3>
+          <p>✅ Correctas</p>
+        </div>
+        <div className="stat-card">
+          <h3 style={{ color: "#ef4444" }}>{results.incorrect}</h3>
+          <p>❌ Incorrectas</p>
+        </div>
+      </div>
 
-      <hr />
+      <div className="separator"></div>
 
       <h2>Detalle de respuestas</h2>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul className="answers-list">
         {practiceQuestions.map((q, index) => {
-          const isCorrect = userAnswers[index] === q.correctAnswer;
+          const userAnswerIndex = userAnswers[index];
+          const isCorrect = userAnswerIndex === q.correctAnswer;
+          const userAnswerText = q.options[userAnswerIndex] || "No respondida";
+          const correctAnswerText = q.options[q.correctAnswer];
+
           return (
             <li
-              key={q.id}
-              style={{
-                marginBottom: "20px",
-                padding: "15px",
-                border: "1px solid #ccc",
-                borderRadius: "8px",
-              }}
+              key={q.id || index}
+              className={`answer-item ${isCorrect ? "correct" : "incorrect"}`}
             >
               <p>
                 <strong>Pregunta {index + 1}:</strong> {q.question}
               </p>
 
-              <p>
+              <p className="mt-20">
                 <strong>Texto:</strong> {q.text}
               </p>
 
-              <p>
-                Tu respuesta:{" "}
-                <strong style={{ color: isCorrect ? "green" : "red" }}>
-                  {q.options[userAnswers[index]]}
-                </strong>
+              <p className="mt-20">
+                <strong>Tu respuesta:</strong>{" "}
+                <span style={{ color: isCorrect ? "#10b981" : "#ef4444" }}>
+                  {userAnswerText}
+                </span>
               </p>
 
-              <p>
-                Respuesta correcta:{" "}
-                <strong style={{ color: "green" }}>
-                  {q.options[q.correctAnswer]}
-                </strong>
-              </p>
-
-              {isCorrect ? (
-                <p style={{ color: "green" }}>
-                  ✔ ¡Muy bien! Respuesta correcta.
+              {!isCorrect && (
+                <p className="mt-20">
+                  <strong>Respuesta correcta:</strong>{" "}
+                  <span style={{ color: "#10b981" }}>{correctAnswerText}</span>
                 </p>
-              ) : (
-                <p style={{ color: "red" }}>✖ Incorrecta.</p>
               )}
 
-              {/* Aquí se muestra la explicación si existe */}
               {q.explanation && (
-                <p style={{ fontStyle: "italic", color: "white" }}>
-                  💡 Explicación: {q.explanation}
-                </p>
+                <div className="explanation-box">
+                  💡 <strong>Explicación:</strong> {q.explanation}
+                </div>
               )}
             </li>
           );
         })}
       </ul>
 
-      <button onClick={onRestart}>Volver al inicio</button>
+      <button className="back-button" onClick={onRestart}>
+        Volver al inicio
+      </button>
     </div>
   );
 }
